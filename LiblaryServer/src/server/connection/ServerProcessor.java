@@ -14,12 +14,10 @@ public class ServerProcessor {
     public static Vector authLogin(String username, String password) {
 
         Vector data = new Vector();
-        String idUser;
-
+        
         try {
-
             DBConnection.connectDB();
-            ResultSet rs;
+            ResultSet resultSet;
             PreparedStatement pst;
 
             String sql = "SELECT * FROM user_data WHERE user_name =? AND user_pass =?;";
@@ -29,12 +27,13 @@ public class ServerProcessor {
             pst.setString(1, username);
             pst.setString(2, password);
 
-            rs = pst.executeQuery();
+            resultSet = pst.executeQuery();
 
-            if (rs.next()) {
-
-                String userType = rs.getString("user_type");
-                idUser = rs.getString("idUser");
+            if (resultSet.next()) {
+                
+                data.addElement(Constant.SUCCESS);
+                String userType = resultSet.getString("user_type");
+                String idUser = resultSet.getString("idUser");
 
                 if (userType.equals("admin")) {
                     data.addElement(Constant.ADMIN);
@@ -46,11 +45,9 @@ public class ServerProcessor {
                     return data;
                 }
             }
-
             DBConnection.closeConnection();
-
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println("In authentical login" + e);
         }
         data.addElement(Constant.FAILED);
         return data;
@@ -123,8 +120,7 @@ public class ServerProcessor {
                 return data;
             } else if (tableName == Constant.BORROWED_BOOK_TABLE) {
 
-                sql = "SELECT * FROM book_borrowed, book "
-                        + "WHERE book_borrowed.idbook = book.idbook;";
+                sql = "SELECT * FROM book_borrowed;";
 
                 pst = DBConnection.conn.prepareStatement(sql);
                 resultSet = pst.executeQuery();
@@ -141,7 +137,7 @@ public class ServerProcessor {
                 return data;
             } else if (tableName == Constant.REQUEST_TABLE) {
 
-                sql = "SELECT * FROM book_request, book WHERE book_request.idbook = book.idbook;";
+                sql = "SELECT * FROM book_request;";
 
                 pst = DBConnection.conn.prepareStatement(sql);
                 resultSet = pst.executeQuery();
@@ -371,17 +367,18 @@ public class ServerProcessor {
             pst.setString(2, idStudent);
 
             pst.executeUpdate();
-
+            
             return Constant.SUCCESS;
 
         } catch (SQLException ex) {
-            System.out.println("In SP requesting to borrow" + ex);
+            System.out.println("In SP return book to borrow "  + ex);
         }
         return Constant.FAILED;
     }
 
+    
     public static Vector searchData(String keyword, int option) {
-
+    //Search data on table book
         try {
             DBConnection.connectDB();
 

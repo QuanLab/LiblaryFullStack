@@ -168,9 +168,9 @@ public final class BookBorrowedReturn extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(btnChoMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnChoMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -231,9 +231,9 @@ public final class BookBorrowedReturn extends javax.swing.JFrame {
                     .addComponent(tfReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -270,6 +270,7 @@ public final class BookBorrowedReturn extends javax.swing.JFrame {
         tfIdStudent.setText(idStudent);
         tfRequestDate.setText(dateBorrow);
         tfReturnDate.setText(dateReturn);
+        
     }//GEN-LAST:event_tblBorrowedMouseClicked
 
     
@@ -293,9 +294,8 @@ public final class BookBorrowedReturn extends javax.swing.JFrame {
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         
         Vector request = new Vector();
-        request.addElement(Constant.REQUEST_TABLE);
-        request.addElement(Constant.BOOKS_STORE_TABLE);
-        request.addElement(tfIdBook.getText().trim());
+        request.addElement(Constant.RETURN);
+    request.addElement(tfIdBook.getText().trim());
         request.addElement(tfIdStudent.getText().trim());
         login.sendRequest(request);
         
@@ -304,9 +304,10 @@ public final class BookBorrowedReturn extends javax.swing.JFrame {
     private void btnAcceptRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptRequestActionPerformed
         Vector request = new Vector();
         request.addElement(Constant.ACCEPT_REQUEST);
-        request.addElement(Constant.BOOKS_STORE_TABLE);
         request.addElement(tfIdBook.getText().trim());
         request.addElement(tfIdStudent.getText().trim());
+        request.addElement(tfRequestDate.getText().trim());
+        request.addElement(tfReturnDate.getText().trim());
         login.sendRequest(request);
     }//GEN-LAST:event_btnAcceptRequestActionPerformed
 

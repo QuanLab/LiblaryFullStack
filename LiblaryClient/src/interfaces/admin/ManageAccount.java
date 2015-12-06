@@ -296,6 +296,7 @@ public final class ManageAccount extends javax.swing.JFrame {
         request.addElement(tfPassword.getText());
         request.addElement((String) cbType.getSelectedItem());
         login.sendRequest(request);
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
@@ -322,7 +323,7 @@ public final class ManageAccount extends javax.swing.JFrame {
             cols.addElement(tblUser.getModel().getColumnName(i));
         }
 
-        System.out.println("BOOK_STORE DATA\n" + userAccountData);
+//        System.out.println("BOOK_STORE DATA\n" + userAccountData);
 
         tblUser.setModel(new DefaultTableModel(userAccountData, cols));
     }

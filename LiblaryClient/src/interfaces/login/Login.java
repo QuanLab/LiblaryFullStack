@@ -204,20 +204,20 @@ public class Login extends javax.swing.JFrame {
                             if (checkDone == Constant.SUCCESS) {
 
                                 int userType = (int) dataReceive.get(2);
-
-                                if (userType == Constant.ADMIN) {
                                     idUser = (String) dataReceive.get(3);
+                                if (userType == Constant.ADMIN) {
+                                    
                                     admin = new AdminFrame(login);
                                     login.setVisible(false);
                                     dataReceive.clear();
 
                                 } else if (userType == Constant.CLIENT) {
-                                    idUser = (String) dataReceive.get(3);
+                                    
                                     userFrame = new UserFrame(login);
                                     login.setVisible(false);
                                     dataReceive.clear();
                                 }
-                            } else if (checkDone == Constant.FAILED) {
+                            } else {
                                 JOptionPane.showMessageDialog(null, "Sai tên đăng nhập hặc mật khẩu!");
                             }
 
@@ -290,6 +290,19 @@ public class Login extends javax.swing.JFrame {
                         case Constant.ACCEPT_REQUEST:
 
                             System.out.println("ACCEPT_REQUEST RESPONSE CATCH!!");
+
+                            if ((int) dataReceive.get(1) == Constant.SUCCESS) {
+
+                                JOptionPane.showMessageDialog(null, "Sucesses Update!");
+                            } else {
+
+                                JOptionPane.showMessageDialog(null, "Update failed!");
+                            }
+                            break;
+                        
+                         case Constant.RETURN:
+
+                            System.out.println("UPDATE RESPONSE CATCH!!");
 
                             if ((int) dataReceive.get(1) == Constant.SUCCESS) {
 

@@ -39,8 +39,8 @@ public class Constant {
     
     //result for request
     public static final int 
-            SUCCESS = 0, 
-            FAILED = -1;  //result of request
+            SUCCESS = 1, 
+            FAILED = 0;//result of request
 
     public static final int 
             ADMIN = 1, 

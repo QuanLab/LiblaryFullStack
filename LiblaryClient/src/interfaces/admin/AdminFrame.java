@@ -25,10 +25,10 @@ public class AdminFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnBookStore = new javax.swing.JButton();
+        btnManageAccount = new javax.swing.JButton();
+        btnBororwReturn = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         mCategory = new javax.swing.JMenu();
@@ -42,26 +42,47 @@ public class AdminFrame extends javax.swing.JFrame {
         setTitle("Phầm mềm quản lý thư viện");
         setLocation(new java.awt.Point(400, 200));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/book.PNG"))); // NOI18N
-        jButton1.setText("Quản lý sách");
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBookStore.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnBookStore.setForeground(new java.awt.Color(255, 0, 0));
+        btnBookStore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/book.PNG"))); // NOI18N
+        btnBookStore.setText("Quản lý sách");
+        btnBookStore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBookStore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookStoreActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 0, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/users.PNG"))); // NOI18N
-        jButton2.setText("Quản lý tài khoản");
+        btnManageAccount.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnManageAccount.setForeground(new java.awt.Color(255, 0, 0));
+        btnManageAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/users.PNG"))); // NOI18N
+        btnManageAccount.setText("Quản lý tài khoản");
+        btnManageAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageAccountActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 0, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/request.png"))); // NOI18N
-        jButton3.setText("Yêu cầu mượn sách");
+        btnBororwReturn.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnBororwReturn.setForeground(new java.awt.Color(255, 0, 0));
+        btnBororwReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/request.png"))); // NOI18N
+        btnBororwReturn.setText("Yêu cầu mượn sách");
+        btnBororwReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBororwReturnActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 0, 0));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        jButton4.setText("Thoát");
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 0, 0));
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
+        btnExit.setText("Thoát");
+        btnExit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/liblary.jpg"))); // NOI18N
         jLabel1.setLabelFor(this);
@@ -120,34 +141,34 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnManageAccount)
+                            .addComponent(btnBookStore, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnBororwReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 24, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBookStore, btnBororwReturn, btnExit, btnManageAccount});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(btnBookStore)
+                    .addComponent(btnBororwReturn))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
+                    .addComponent(btnManageAccount)
+                    .addComponent(btnExit))
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBookStore, btnBororwReturn, btnExit, btnManageAccount});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,12 +202,36 @@ public class AdminFrame extends javax.swing.JFrame {
         manageAccount = new ManageAccount(login);
     }//GEN-LAST:event_miManageAccountActionPerformed
 
+    private void btnBookStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookStoreActionPerformed
+        try {
+            bookStore = new BookStore(login);
+        } catch (ClassNotFoundException | InstantiationException ex) {
+            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnBookStoreActionPerformed
+
+    private void btnBororwReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBororwReturnActionPerformed
+        try {
+            borowReturn = new BookBorrowedReturn(login);
+        } catch (ClassNotFoundException | InstantiationException ex) {
+            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnBororwReturnActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnManageAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAccountActionPerformed
+        manageAccount = new ManageAccount(login);
+    }//GEN-LAST:event_btnManageAccountActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBookStore;
+    private javax.swing.JButton btnBororwReturn;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnManageAccount;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu mCategory;

@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Server extends JFrame implements ActionListener {
 
@@ -61,7 +62,6 @@ public class Server extends JFrame implements ActionListener {
             this.socket = socket;
 
             try {
-
                 this.ous = ous;
                 ois = new ObjectInputStream(socket.getInputStream());
 
@@ -86,33 +86,13 @@ public class Server extends JFrame implements ActionListener {
                     if (request == Constant.LOGIN) {
 
                         System.out.println("LOGIN CATCH!");
-
                         String username = (String) dataReceived.get(1);
                         String password = (String) dataReceived.get(2);
 
-                        Vector resultLogin = ServerProcessor.authLogin(username, password);
+                        dataResponse = ServerProcessor.authLogin(username, password);
 
-                        int checkType = (int) resultLogin.get(0);
-                        String idUser = (String) resultLogin.get(1);
-
-                        dataResponse = new Vector();
-                        dataResponse.addElement(Constant.LOGIN);
-
-                        if (checkType == Constant.ADMIN) {
-
-                            dataResponse.addElement(Constant.SUCCESS);
-                            dataResponse.addElement(Constant.ADMIN);
-                            dataResponse.addElement(idUser);
-
-                        } else if (checkType == Constant.CLIENT) {
-
-                            dataResponse.addElement(Constant.SUCCESS);
-                            dataResponse.addElement(Constant.CLIENT);
-                            dataResponse.addElement(idUser);
-
-                        } else if (checkType == Constant.FAILED) {
-                            dataResponse.addElement(Constant.FAILED);
-                        }
+                        dataResponse.add(0, Constant.LOGIN);
+                        
                         sendResponseData(dataResponse);
 
                     } else if (request == Constant.LOAD) {
@@ -196,7 +176,19 @@ public class Server extends JFrame implements ActionListener {
                             dataResponse.addElement(Constant.FAILED);
                         }
 
-                    } else if (request == Constant.SEARCH) {
+                    } else if (request == Constant.RETURN) {
+
+                        dataResponse = new Vector();
+                        dataResponse.addElement(Constant.RETURN);
+                        System.out.println("ACCEPT_REQUEST requesting catch!!");
+
+                        if (ServerProcessor.returnBook(dataReceived) == Constant.SUCCESS) {
+                            dataResponse.addElement(Constant.SUCCESS);
+                        } else {
+                            dataResponse.addElement(Constant.FAILED);
+                        }
+
+                    }else if (request == Constant.SEARCH) {
 
                         System.out.println("SEARCH requesting catch!!");
 
@@ -260,7 +252,7 @@ public class Server extends JFrame implements ActionListener {
         while (it.hasNext()) {
 
             try {
-
+                
                 ObjectOutputStream ous = (ObjectOutputStream) it.next();
                 ous.writeObject(message);
                 ous.flush();
